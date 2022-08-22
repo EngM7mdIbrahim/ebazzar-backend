@@ -1,4 +1,6 @@
 const authRouter = require("express").Router();
+const jwt = require('jsonwebtoken');
+require('dotenv').config()
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 const { getErrorBody, validateProperties } = require("./helper");
@@ -62,10 +64,15 @@ authRouter.post("/signin", async (req, res) => {
   const hashedPassword = existingUser.password;
   const match = await bcrypt.compare(password,hashedPassword);
   if(match){
-    res.status(400).send({message: 'User is signed in!'});
+    const payload = {
+      id: existingUser.id,
+      email: existingUser.email,
+    };
+    const accessToken = jwt.sign(payload , process.env.ACCESS_TOKEN_SECRET);
+    res.status(200).send({message: 'User is signed in!', accessToken});
     return;
   }else{
-    res.status(200).send(getErrorBody("Invalid password !"));
+    res.status(401).send(getErrorBody("Invalid password !"));
     return;
   }
 

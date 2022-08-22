@@ -1,5 +1,5 @@
 const adsRouter = require("express").Router();
-const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const Ad = require("../models/ad");
 const Category = require("../models/category");
 const User = require("../models/user");
@@ -10,6 +10,8 @@ const {
 } = require("./helper");
 
 adsRouter.get("/", async (req, res) => {
+  
+  
   try {
     const ads = await Ad.find({});
     res.status(200).send(ads);

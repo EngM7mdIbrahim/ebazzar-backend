@@ -7,6 +7,8 @@ const {DB_CONN_STRING, DB_LOCAL_CONN_STRING} = require("./constants/cosntants");
 const authRouter = require("./routes/auth.js");
 const adsRouter = require('./routes/ads');
 const categoriesRouter = require('./routes/categories');
+const { authAccessToken } = require("./constants/middleWares");
+
 
 //setup
 mongoose
@@ -21,6 +23,7 @@ app.use(express.json());
 
 //Use all routes
 app.use("/auth", authRouter);
+app.use(authAccessToken);
 app.use('/ads', adsRouter);
 app.use('/categories', categoriesRouter);
 
