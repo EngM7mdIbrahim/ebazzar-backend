@@ -4,11 +4,10 @@ const mongoose = require("mongoose");
 const {DB_CONN_STRING, DB_LOCAL_CONN_STRING} = require("./constants/cosntants");
 
 // All router imports
-const authRouter = require("./routes/auth.js");
-const adsRouter = require('./routes/ads');
-const categoriesRouter = require('./routes/categories');
+const authRouter = require("./routes/auth.route.js");
+const adsRouter = require('./routes/ads.route.js');
+const categoriesRouter = require('./routes/categories.route.js');
 const { authAccessToken } = require("./constants/middleWares");
-
 
 //setup
 mongoose

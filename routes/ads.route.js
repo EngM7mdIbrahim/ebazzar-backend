@@ -1,8 +1,8 @@
 const adsRouter = require("express").Router();
 const jwt = require("jsonwebtoken");
-const Ad = require("../models/ad");
-const Category = require("../models/category");
-const User = require("../models/user");
+const Ad = require("../models/ad.model.js");
+const Category = require("../models/category.model.js");
+const User = require("../models/user.model.js");
 const {
   getErrorBody,
   validateProperties,

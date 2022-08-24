@@ -1,7 +1,7 @@
 const categoriesRouter = require("express").Router();
 const bcrypt = require("bcryptjs");
 const { default: mongoose } = require("mongoose");
-const Category = require("../models/category");
+const Category = require("../models/category.model.js");
 const {
   getErrorBody,
   validateProperties,

@@ -14,10 +14,14 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     ads: [{type: mongoose.Schema.Types.ObjectId, ref: 'Ad'}],
+    refreshToken: {
+        type: String,
+        default: null
+    },
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    }, 
 })
 
 module.exports = mongoose.model('User',userSchema);
